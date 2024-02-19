@@ -79,6 +79,11 @@ const markComplete = async () => {
       return;
     }
 
+    if(data.length===1 && data[0].trim()===""){
+      console.log('\nNo Tasks Added Yet\n');
+      return
+    };
+
     console.log("\nYour tasks are:");
     data.map((line, idx) => {
       console.log(`${idx + 1}. ${line}`);
@@ -112,6 +117,11 @@ const removeTask = async () => {
       console.log("No tasks available to remove.");
       return;
     }
+
+    if(data.length===1 && data[0].trim()===""){
+      console.log('\nNo Tasks Added Yet\n');
+      return
+    };
 
     console.log("\nYour tasks are:");
     data.map((line, idx) => {
@@ -154,6 +164,10 @@ async function main() {
         break;
       case "2":
         const data = await viewFile();
+        if(data.length===1 && data[0].trim()===""){
+          console.log('\nNo Tasks Added Yet\n');
+          break;
+        };
         if (data.length > 0) {
           console.log("\nYour tasks are:");
           data.map((line, idx) => {
